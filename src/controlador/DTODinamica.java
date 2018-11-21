@@ -18,6 +18,10 @@ public class DTODinamica {
     private ArrayList<String> rangoAno = new ArrayList<String>();
     private ArrayList<String> indicadores = new ArrayList<String>();
     private ArrayList<String> consulta;
+    private ArrayList<String> edadQuinquenal;
+    private ArrayList<String> edad;
+    private ArrayList<String> sexo;
+    private ArrayList<String> rol;
 
     public ArrayList<String> getProvincia() {
         return provincia;
@@ -65,6 +69,38 @@ public class DTODinamica {
 
     public void setConsulta(ArrayList<String> consulta) {
         this.consulta = consulta;
+    }
+
+    public ArrayList<String> getEdadQuinquenal() {
+        return edadQuinquenal;
+    }
+
+    public void setEdadQuinquenal(ArrayList<String> edadQuinquenal) {
+        this.edadQuinquenal = edadQuinquenal;
+    }
+
+    public ArrayList<String> getEdad() {
+        return edad;
+    }
+
+    public void setEdad(ArrayList<String> edad) {
+        this.edad = edad;
+    }
+
+    public ArrayList<String> getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(ArrayList<String> sexo) {
+        this.sexo = sexo;
+    }
+
+    public ArrayList<String> getRol() {
+        return rol;
+    }
+
+    public void setRol(ArrayList<String> rol) {
+        this.rol = rol;
     }
 
    

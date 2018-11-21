@@ -12,9 +12,9 @@ import java.util.ArrayList;
  *
  * @author tanzanita
  */
-public class TipoLesion extends ConsultaDecorator{
+public class Rol extends ConsultaDecorator {
 
-    public TipoLesion(ConsultaDinamica consultaDinamica) {
+    public Rol(ConsultaDinamica consultaDinamica) {
         super(consultaDinamica);
     }
 
@@ -22,7 +22,7 @@ public class TipoLesion extends ConsultaDecorator{
     public ArrayList<String> getDescripcion(DTODinamica dto) {
         ArrayList<String> resultado = new ArrayList<String>();
         resultado = resultado = getConsultaDinamica().getDescripcion(dto);
-        resultado.add(dto.getEdad().get(0));
+        resultado.add(dto.getRol().get(0));
         return resultado;
     }
     
