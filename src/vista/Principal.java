@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package vista;
+import controlador.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -16,6 +20,22 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        /*
+        
+        //Consulta dinamica
+        ArrayList<String> provincia= new ArrayList<String>();        
+        ArrayList<String> canton= new ArrayList<String>();
+        ArrayList<String> distrito= new ArrayList<String>();
+        ArrayList<String> rangoAno = new ArrayList<String>();
+        ArrayList<String> consulta = new ArrayList<String>();
+        ArrayList<String> edadQuinquenal = new ArrayList<String>();
+        ArrayList<String> edad = new ArrayList<String>();
+        ArrayList<String> sexo = new ArrayList<String>();
+        ArrayList<String> rol = new ArrayList<String>();
+        ArrayList<String> lesion = new ArrayList<String>();
+        
+        dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
+        */
     }
 
     /**
@@ -49,7 +69,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jComboBoxLesion = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jComboBoxAfectado = new javax.swing.JComboBox<>();
+        jComboBoxRol = new javax.swing.JComboBox<>();
         jPanelBase = new javax.swing.JPanel();
         jPanelComportamiento = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -86,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
 
         jComboBoxDistrito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBoxAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2012", "2013", "2014", "2012-2013", "2013-2014", "2012-2014" }));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Indicadores");
@@ -114,26 +134,22 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel9.setText("Sexo");
 
-        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer", "Desconocido" }));
 
         jLabel10.setText("Edad");
 
         jLabel11.setText("Lesion");
 
-        jComboBoxLesion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxLesion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ileso", "Herido leve", "Herido grave", "Muerte" }));
 
         jLabel12.setText("Tipo Afectado");
 
-        jComboBoxAfectado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciclista", "Conductor", "Dueño de propiedad", "Motociclista", "Otro", "Pasajero Bus o Microbus", "Pasajero Carro", "Pasajero Moto", "Peatón" }));
 
         javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
         jPanelPrincipal.setLayout(jPanelPrincipalLayout);
         jPanelPrincipalLayout.setHorizontalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(63, 63, 63))
             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +177,7 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(BtnDinamica, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtnDinamica1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtnComportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 11, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -174,23 +190,26 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
-                                    .addComponent(jComboBoxLesion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))
+                                    .addComponent(jComboBoxLesion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
-                                    .addComponent(jComboBoxAfectado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jComboBoxRol, 0, 0, Short.MAX_VALUE))))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(110, 110, 110))
         );
         jPanelPrincipalLayout.setVerticalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
@@ -225,7 +244,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxAfectado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(56, 56, 56)
                 .addComponent(BtnComportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -246,12 +265,12 @@ public class Principal extends javax.swing.JFrame {
         jPanelComportamiento.setLayout(jPanelComportamientoLayout);
         jPanelComportamientoLayout.setHorizontalGroup(
             jPanelComportamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 626, Short.MAX_VALUE)
             .addGroup(jPanelComportamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelComportamientoLayout.createSequentialGroup()
                     .addGap(318, 318, 318)
                     .addComponent(jLabel7)
-                    .addContainerGap(331, Short.MAX_VALUE)))
+                    .addContainerGap(267, Short.MAX_VALUE)))
         );
         jPanelComportamientoLayout.setVerticalGroup(
             jPanelComportamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,12 +292,12 @@ public class Principal extends javax.swing.JFrame {
         jPanelDinamica.setLayout(jPanelDinamicaLayout);
         jPanelDinamicaLayout.setHorizontalGroup(
             jPanelDinamicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 626, Short.MAX_VALUE)
             .addGroup(jPanelDinamicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelDinamicaLayout.createSequentialGroup()
                     .addGap(318, 318, 318)
                     .addComponent(jLabel8)
-                    .addContainerGap(331, Short.MAX_VALUE)))
+                    .addContainerGap(267, Short.MAX_VALUE)))
         );
         jPanelDinamicaLayout.setVerticalGroup(
             jPanelDinamicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +322,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPaneLibreLayout.createSequentialGroup()
                 .addGap(280, 280, 280)
                 .addComponent(jLabel2)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         jPaneLibreLayout.setVerticalGroup(
             jPaneLibreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,14 +339,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -355,6 +374,7 @@ public class Principal extends javax.swing.JFrame {
         jPanelBase.revalidate();
     }//GEN-LAST:event_BtnComportamientoActionPerformed
 
+    
     private void BtnDinamicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDinamicaActionPerformed
         //Eliminar paneles
         jPanelBase.removeAll();
@@ -364,6 +384,53 @@ public class Principal extends javax.swing.JFrame {
         jPanelBase.add(jPanelDinamica);
         jPanelBase.repaint();
         jPanelBase.revalidate();        // TODO add your handling code here:
+        //obtener datos de la interfaz
+        
+        //Provincias
+        ArrayList<String> provincia= new ArrayList<String>();
+        int size = jListProvincia.getModel().getSize();
+        StringBuilder provincias = new StringBuilder();
+        for(int i=0; i<size; i++){
+            provincias.append("\n").append(jListProvincia.getModel().getElementAt(i));
+        }
+        provincia.add(provincias.toString());
+
+        ArrayList<String> canton= new ArrayList<String>();
+        canton.add(jComboBoxCanton.getSelectedItem().toString());
+        
+        ArrayList<String> distrito= new ArrayList<String>();
+        distrito.add(jComboBoxDistrito.getSelectedItem().toString());
+        
+        ArrayList<String> rangoAno= new ArrayList<String>();
+        rangoAno.add(jComboBoxAño.getSelectedItem().toString());
+        
+        
+        ArrayList<String> edad= new ArrayList<String>();
+        int ed = Integer.parseInt(jTextFieldEdad.getText());
+       
+        if(ed >= 0 && ed<=90){
+            edad.add(jTextFieldEdad.getText());
+            //calcular edad quinquenal
+        }else{
+            JOptionPane.showMessageDialog(null, "Error la edad no se encuentra del del rango de busqueda", "InfoBox: " + "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        ArrayList<String> sexo= new ArrayList<String>();
+        sexo.add(jComboBoxSexo.getSelectedItem().toString());
+        
+        ArrayList<String> rol= new ArrayList<String>();
+        rol.add(jComboBoxRol.getSelectedItem().toString());
+        
+        ArrayList<String> lesion = new ArrayList<String>();
+        lesion.add(jComboBoxLesion.getSelectedItem().toString());
+        
+        ArrayList<String> consulta = new ArrayList<String>();
+        ArrayList<String> edadQuinquenal = new ArrayList<String>();
+        //Cracion DTODinamica
+        dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
+        //Se pasa al conrolador
+        controlador = new Controlador(dtoDinamica);
+               
     }//GEN-LAST:event_BtnDinamicaActionPerformed
 
     private void BtnDinamica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDinamica1ActionPerformed
@@ -412,15 +479,17 @@ public class Principal extends javax.swing.JFrame {
         });
     }
 
+    private DTODinamica dtoDinamica;
+    private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BtnComportamiento;
     private javax.swing.JToggleButton BtnDinamica;
     private javax.swing.JToggleButton BtnDinamica1;
-    private javax.swing.JComboBox<String> jComboBoxAfectado;
     private javax.swing.JComboBox<String> jComboBoxAño;
     private javax.swing.JComboBox<String> jComboBoxCanton;
     private javax.swing.JComboBox<String> jComboBoxDistrito;
     private javax.swing.JComboBox<String> jComboBoxLesion;
+    private javax.swing.JComboBox<String> jComboBoxRol;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -436,7 +505,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jListProvincia;
     private javax.swing.JPanel jPaneLibre;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBase;
     private javax.swing.JPanel jPanelComportamiento;
     private javax.swing.JPanel jPanelDinamica;
@@ -445,3 +514,4 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEdad;
     // End of variables declaration//GEN-END:variables
 }
+

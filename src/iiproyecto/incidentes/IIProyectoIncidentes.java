@@ -21,6 +21,7 @@ public class IIProyectoIncidentes {
     
     
     public static void main(String[] args) {
+        /*
        DTODinamica dto = new DTODinamica();
        ArrayList<String> canton = new ArrayList<String>();
        canton.add("Oreamuno");
@@ -49,6 +50,7 @@ public class IIProyectoIncidentes {
        dinamica = new Distrito(dinamica);
        
         System.out.println(dinamica.getDescripcion(dto));
+*/
     }
     
 }

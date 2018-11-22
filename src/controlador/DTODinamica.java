@@ -13,15 +13,57 @@ import java.util.ArrayList;
  */
 public class DTODinamica {
     private ArrayList<String> provincia = new ArrayList<String>();
-    private ArrayList<String> canton;
-    private ArrayList<String> distrito;
+    private ArrayList<String> canton= new ArrayList<String>();
+    private ArrayList<String> distrito= new ArrayList<String>();
     private ArrayList<String> rangoAno = new ArrayList<String>();
-    private ArrayList<String> indicadores = new ArrayList<String>();
-    private ArrayList<String> consulta;
-    private ArrayList<String> edadQuinquenal;
-    private ArrayList<String> edad;
-    private ArrayList<String> sexo;
-    private ArrayList<String> rol;
+    private ArrayList<String> consulta = new ArrayList<String>();
+    private ArrayList<String> edadQuinquenal = new ArrayList<String>();
+    private ArrayList<String> edad = new ArrayList<String>();
+    private ArrayList<String> sexo = new ArrayList<String>();
+    private ArrayList<String> rol = new ArrayList<String>();
+    private ArrayList<String> lesion = new ArrayList<String>();
+    
+    
+//Completo
+    public DTODinamica(ArrayList<String> provincia, ArrayList<String> canton,ArrayList<String> distrito, ArrayList<String> rangoAno,ArrayList<String> consulta, 
+    ArrayList<String> edadQuinquenal, ArrayList<String> edad, ArrayList<String> sexo, ArrayList<String> rol, ArrayList<String> lesion) {
+        this.canton=canton;
+        this.consulta =consulta;
+        this.distrito=distrito;
+        this.edad =edad;
+        this.edadQuinquenal = edadQuinquenal;
+        this.lesion = lesion;
+        this.provincia = provincia;
+        this.rangoAno = rangoAno;
+        this.rol = rol;
+        this.sexo = sexo;
+    }
+    
+//Varias provincias
+    public DTODinamica(ArrayList<String> provincia, ArrayList<String> rangoAno,ArrayList<String> consulta, 
+    ArrayList<String> edadQuinquenal, ArrayList<String> edad, ArrayList<String> sexo, ArrayList<String> rol, ArrayList<String> lesion) {
+        this.consulta =consulta;
+        this.edad =edad;
+        this.edadQuinquenal = edadQuinquenal;
+        this.lesion = lesion;
+        this.provincia = provincia;
+        this.rangoAno = rangoAno;
+        this.rol = rol;
+        this.sexo = sexo;
+    }
+    
+// Sin provincia muestra datos totales
+    //Varias provincias
+    public DTODinamica(ArrayList<String> rangoAno,ArrayList<String> consulta, 
+    ArrayList<String> edadQuinquenal, ArrayList<String> edad, ArrayList<String> sexo, ArrayList<String> rol, ArrayList<String> lesion) {
+        this.consulta =consulta;
+        this.edad =edad;
+        this.edadQuinquenal = edadQuinquenal;
+        this.lesion = lesion;
+        this.rangoAno = rangoAno;
+        this.rol = rol;
+        this.sexo = sexo;
+    }
 
     public ArrayList<String> getProvincia() {
         return provincia;
@@ -53,14 +95,6 @@ public class DTODinamica {
 
     public void setRangoAno(ArrayList<String> rangoAno) {
         this.rangoAno = rangoAno;
-    }
-
-    public ArrayList<String> getIndicadores() {
-        return indicadores;
-    }
-
-    public void setIndicadores(ArrayList<String> indicadores) {
-        this.indicadores = indicadores;
     }
 
     public ArrayList<String> getConsulta() {
@@ -101,6 +135,19 @@ public class DTODinamica {
 
     public void setRol(ArrayList<String> rol) {
         this.rol = rol;
+    }
+
+    public ArrayList<String> getLesion() {
+        return lesion;
+    }
+
+    public void setLesion(ArrayList<String> lesion) {
+        this.lesion = lesion;
+    }
+
+    @Override
+    public String toString() {
+        return "DTODinamica{" + "provincia=" + provincia + ", canton=" + canton + ", distrito=" + distrito + ", rangoAno=" + rangoAno + ", consulta=" + consulta + ", edadQuinquenal=" + edadQuinquenal + ", edad=" + edad + ", sexo=" + sexo + ", rol=" + rol + ", lesion=" + lesion + '}';
     }
 
    
