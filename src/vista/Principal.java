@@ -50,8 +50,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanelPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListProvincia = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -70,6 +68,8 @@ public class Principal extends javax.swing.JFrame {
         jComboBoxLesion = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jComboBoxRol = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaProvincias = new javax.swing.JTextArea();
         jPanelBase = new javax.swing.JPanel();
         jPanelComportamiento = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -84,14 +84,6 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Provincia");
-
-        jListProvincia.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Cartágo", "San José", "Heredia", "Alajuela", "Puntarenas", "Guanacaste", "Limón" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jListProvincia);
-        jListProvincia.getAccessibleContext().setAccessibleName("jListProvincia");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Cantón");
@@ -142,20 +134,47 @@ public class Principal extends javax.swing.JFrame {
 
         jComboBoxLesion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ileso", "Herido leve", "Herido grave", "Muerte" }));
 
-        jLabel12.setText("Tipo Afectado");
+        jLabel12.setText("Rol");
 
         jComboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciclista", "Conductor", "Dueño de propiedad", "Motociclista", "Otro", "Pasajero Bus o Microbus", "Pasajero Carro", "Pasajero Moto", "Peatón" }));
+
+        jTextAreaProvincias.setColumns(20);
+        jTextAreaProvincias.setRows(5);
+        jTextAreaProvincias.setText("Cartago\nSan José\nAlajuela\nHeredia\nPuntarenas\nGuanacaste\nLimón");
+        jScrollPane2.setViewportView(jTextAreaProvincias);
 
         javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
         jPanelPrincipal.setLayout(jPanelPrincipalLayout);
         jPanelPrincipalLayout.setHorizontalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(110, 110, 110))
             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldEdad, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel10))
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jComboBoxLesion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jComboBoxRol, 0, 0, Short.MAX_VALUE)))))
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                                 .addGap(4, 4, 4)
@@ -177,30 +196,8 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(BtnDinamica, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtnDinamica1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtnComportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextFieldEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel10))
-                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jComboBoxLesion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jComboBoxRol, 0, 0, Short.MAX_VALUE))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(110, 110, 110))
         );
         jPanelPrincipalLayout.setVerticalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,10 +205,10 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,56 +380,77 @@ public class Principal extends javax.swing.JFrame {
         //Agregar paneles
         jPanelBase.add(jPanelDinamica);
         jPanelBase.repaint();
-        jPanelBase.revalidate();        // TODO add your handling code here:
-        //obtener datos de la interfaz
+        jPanelBase.revalidate();  
+        obtenerDatosDinamica();
         
-        //Provincias
-        ArrayList<String> provincia= new ArrayList<String>();
-        int size = jListProvincia.getModel().getSize();
-        StringBuilder provincias = new StringBuilder();
-        for(int i=0; i<size; i++){
-            provincias.append("\n").append(jListProvincia.getModel().getElementAt(i));
-        }
-        provincia.add(provincias.toString());
-
-        ArrayList<String> canton= new ArrayList<String>();
-        canton.add(jComboBoxCanton.getSelectedItem().toString());
+               
+    }//GEN-LAST:event_BtnDinamicaActionPerformed
+public void obtenerDatosDinamica(){
+     ArrayList<String> canton= new ArrayList<String>();
+     ArrayList<String> distrito= new ArrayList<String>();
+     ArrayList<String> rangoAno= new ArrayList<String>();
+     ArrayList<String> edad= new ArrayList<String>();
+     ArrayList<String> sexo= new ArrayList<String>();
+     ArrayList<String> rol= new ArrayList<String>();
+     ArrayList<String> lesion = new ArrayList<String>();
+     ArrayList<String> consulta = new ArrayList<String>();
+     ArrayList<String> edadQuinquenal = new ArrayList<String>();
+     
+    //Nivel Pais, todas las provincias
+    //Veridficar si se piden toas las provincias
+     ArrayList<String> provincia= new ArrayList<String>();
+        int size = jTextAreaProvincias.getLineCount();
+        System.out.println("size: "+size);
+        if(size > 1){
+            jComboBoxCanton.enableInputMethods(false);
+            jComboBoxDistrito.enableInputMethods(false);
+            StringBuilder provincias = new StringBuilder();
+            for(int i=0; i<size; i++){
+            provincias.append("\n").append(jTextAreaProvincias.getLineCount());
+            //muchas provincias no se pide canton ni distrito
+            rangoAno.add(jComboBoxAño.getSelectedItem().toString());
+            int ed = Integer.parseInt(jTextFieldEdad.getText());
+            if(ed >= 0 && ed<=90){
+                edad.add(jTextFieldEdad.getText());
+                //calcular edad quinquenal
+            }else{
+                JOptionPane.showMessageDialog(null, "Error la edad no se encuentra del del rango de busqueda", "InfoBox: " + "ERROR", JOptionPane.INFORMATION_MESSAGE);
+             }
+            
+            }
+            sexo.add(jComboBoxSexo.getSelectedItem().toString());
+            rol.add(jComboBoxRol.getSelectedItem().toString());
+            lesion.add(jComboBoxLesion.getSelectedItem().toString());
+            provincia.add(provincias.toString());
         
-        ArrayList<String> distrito= new ArrayList<String>();
-        distrito.add(jComboBoxDistrito.getSelectedItem().toString());
-        
-        ArrayList<String> rangoAno= new ArrayList<String>();
-        rangoAno.add(jComboBoxAño.getSelectedItem().toString());
-        
-        
-        ArrayList<String> edad= new ArrayList<String>();
-        int ed = Integer.parseInt(jTextFieldEdad.getText());
-       
-        if(ed >= 0 && ed<=90){
-            edad.add(jTextFieldEdad.getText());
-            //calcular edad quinquenal
         }else{
-            JOptionPane.showMessageDialog(null, "Error la edad no se encuentra del del rango de busqueda", "InfoBox: " + "ERROR", JOptionPane.INFORMATION_MESSAGE);
+            jComboBoxCanton.enableInputMethods(true);
+            jComboBoxDistrito.enableInputMethods(true);
+                        StringBuilder provincias = new StringBuilder();
+            for(int i=0; i<size; i++){
+            provincias.append("\n").append(jTextAreaProvincias.getLineCount());
+            //muchas provincias no se pide canton ni distrito
+            rangoAno.add(jComboBoxAño.getSelectedItem().toString());
+            int ed = Integer.parseInt(jTextFieldEdad.getText());
+            if(ed >= 0 && ed<=90){
+                edad.add(jTextFieldEdad.getText());
+                //calcular edad quinquenal
+            }else{
+                JOptionPane.showMessageDialog(null, "Error la edad no se encuentra del del rango de busqueda", "InfoBox: " + "ERROR", JOptionPane.INFORMATION_MESSAGE);
+            }
+            sexo.add(jComboBoxSexo.getSelectedItem().toString());
+            rol.add(jComboBoxRol.getSelectedItem().toString());
+            lesion.add(jComboBoxLesion.getSelectedItem().toString());
+            }
+            provincia.add(provincias.toString()); 
         }
-        
-        ArrayList<String> sexo= new ArrayList<String>();
-        sexo.add(jComboBoxSexo.getSelectedItem().toString());
-        
-        ArrayList<String> rol= new ArrayList<String>();
-        rol.add(jComboBoxRol.getSelectedItem().toString());
-        
-        ArrayList<String> lesion = new ArrayList<String>();
-        lesion.add(jComboBoxLesion.getSelectedItem().toString());
-        
-        ArrayList<String> consulta = new ArrayList<String>();
-        ArrayList<String> edadQuinquenal = new ArrayList<String>();
+       
         //Cracion DTODinamica
         dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
         //Se pasa al conrolador
         controlador = new Controlador(dtoDinamica);
-               
-    }//GEN-LAST:event_BtnDinamicaActionPerformed
-
+    
+}
     private void BtnDinamica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDinamica1ActionPerformed
         //Eliminar paneles
         jPanelBase.removeAll();
@@ -503,14 +521,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jListProvincia;
     private javax.swing.JPanel jPaneLibre;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBase;
     private javax.swing.JPanel jPanelComportamiento;
     private javax.swing.JPanel jPanelDinamica;
     private javax.swing.JPanel jPanelPrincipal;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextAreaProvincias;
     private javax.swing.JTextField jTextFieldEdad;
     // End of variables declaration//GEN-END:variables
 }

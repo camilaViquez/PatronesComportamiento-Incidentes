@@ -23,7 +23,7 @@ public class Provincia extends ConsultaDecorator{
 
         ArrayList<String> resultado = new ArrayList<String>();
         //crear un for y dento la consulta con cada una de las provincias del array y lo que devuelve consulta es lo que retorna, se retorna en oresultado
-        resultado = resultado = getConsultaDinamica().getDescripcion(dto);
+        resultado = getConsultaDinamica().getDescripcion(dto);
         resultado.add(dto.getProvincia().get(0));
         return resultado;    }
     

@@ -16,7 +16,9 @@ public class LapsoTiempo1 extends LapsoTiempo{
 
     @Override
     public ArrayList<String> getDescripcion(DTODinamica dto) {
-        return dto.getRangoAno();
+        ArrayList<String> ano1 = new ArrayList<String>();
+        ano1.add("2012");
+        return ano1;
     }
 
   

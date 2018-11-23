@@ -21,7 +21,7 @@ public class Sexo extends ConsultaDecorator {
     @Override
     public ArrayList<String> getDescripcion(DTODinamica dto) {
         ArrayList<String> resultado = new ArrayList<String>();
-        resultado = resultado = getConsultaDinamica().getDescripcion(dto);
+        resultado = getConsultaDinamica().getDescripcion(dto);
         resultado.add(dto.getSexo().get(0));
         return resultado;
     }

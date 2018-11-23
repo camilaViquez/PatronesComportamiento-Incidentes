@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package modelo;
-
 import controlador.DTODinamica;
 import java.util.ArrayList;
 
@@ -12,17 +11,14 @@ import java.util.ArrayList;
  *
  * @author tanzanita
  */
-public class Canton extends ConsultaDecorator{
-
-    public Canton(ConsultaDinamica consultaDinamica) {
-        super(consultaDinamica);
-    }
+public class LapsoTiempo2 extends LapsoTiempo{
 
     @Override
     public ArrayList<String> getDescripcion(DTODinamica dto) {
-        ArrayList<String> resultado = new ArrayList<String>();
-        resultado = getConsultaDinamica().getDescripcion(dto);
-        resultado.add(dto.getDistrito().get(0));
-        return resultado;
+        ArrayList<String> ano1 = new ArrayList<String>();
+        ano1.add("2013");
+        return ano1;
     }
+
+  
 }
