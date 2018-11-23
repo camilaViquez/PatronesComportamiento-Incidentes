@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controlador;
+import com.teamdev.jxmaps.MapStatus;
 import java.util.ArrayList;
 import modelo.*;
 
@@ -11,7 +12,7 @@ import modelo.*;
  *
  * @author tanzanita
  */
-public class Controlador {
+public class Controlador{
      private DTODinamica dtoDinamica;
      private ConsultaDinamica consultaDinamica;
 
@@ -20,24 +21,29 @@ public class Controlador {
         System.out.println(dtoDinamica.toString());
     }
 
-     public DTODinamica procesarConsultaDinamica(DTODinamica capsulaDinamica){
-         
-         String rango = dtoDinamica.getRangoAno().get(0);
-         if(rango == "2012"){
-             
-             ConsultaDinamica dinamica = new LapsoTiempo1();
-             dinamica = new Provincia(dinamica);
-             dinamica = new Distrito(dinamica);
-             dinamica = new Canton(dinamica);
-             dinamica = new Edad(dinamica);
-             dinamica = new Sexo(dinamica);
-             dinamica = new Rol(dinamica);
-             dinamica = new TipoLesion(dinamica);
-             System.out.println("HOLA: "+dinamica.getDescripcion(capsulaDinamica));
-
-         
+    public DTODinamica procesarConsultaDinamica(DTODinamica capsulaDinamica){
+        System.out.println(capsulaDinamica.toString());
+        String rango = dtoDinamica.getRangoAno().get(0);
+        if(rango == "2012"){
+            ConsultaDinamica dinamica = new LapsoTiempo1();
+            dinamica = new Provincia(dinamica);
+            //dinamica = new Distrito(dinamica);
+            //dinamica = new Canton(dinamica);
+            dinamica = new Edad(dinamica);
+            dinamica = new Sexo(dinamica);
+            dinamica = new Rol(dinamica);
+            dinamica = new TipoLesion(dinamica);
+            System.out.println(dinamica.getDescripcion(capsulaDinamica));
+            
         }
          return capsulaDinamica;
      }
+ 
+    public void onMapReady(MapStatus status) {
+            
+    }
+    
+
+    
    
 }

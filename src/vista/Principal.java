@@ -7,6 +7,20 @@ package vista;
 import controlador.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
+
+
+import java.awt.BorderLayout;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
+import com.teamdev.jxmaps.swing.MapView;
+
+import com.teamdev.jxmaps.*;
 
 
 /**
@@ -20,22 +34,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        /*
-        
-        //Consulta dinamica
-        ArrayList<String> provincia= new ArrayList<String>();        
-        ArrayList<String> canton= new ArrayList<String>();
-        ArrayList<String> distrito= new ArrayList<String>();
-        ArrayList<String> rangoAno = new ArrayList<String>();
-        ArrayList<String> consulta = new ArrayList<String>();
-        ArrayList<String> edadQuinquenal = new ArrayList<String>();
-        ArrayList<String> edad = new ArrayList<String>();
-        ArrayList<String> sexo = new ArrayList<String>();
-        ArrayList<String> rol = new ArrayList<String>();
-        ArrayList<String> lesion = new ArrayList<String>();
-        
-        dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
-        */
+        //Mapear mapa;
+        Map map;
     }
 
     /**
@@ -47,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanelPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -140,17 +141,13 @@ public class Principal extends javax.swing.JFrame {
 
         jTextAreaProvincias.setColumns(20);
         jTextAreaProvincias.setRows(5);
-        jTextAreaProvincias.setText("Cartago\nSan José\nAlajuela\nHeredia\nPuntarenas\nGuanacaste\nLimón");
+        jTextAreaProvincias.setText("Cartago\nSan José\nLimón \nPuntarenas\nGuanacaste\nAlajuela\nHeredia");
         jScrollPane2.setViewportView(jTextAreaProvincias);
 
         javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
         jPanelPrincipal.setLayout(jPanelPrincipalLayout);
         jPanelPrincipalLayout.setHorizontalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(110, 110, 110))
             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,30 +171,35 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jComboBoxRol, 0, 0, Short.MAX_VALUE)))))
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addComponent(jLabel5))
-                            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jComboBoxCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jComboBoxDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel6)
                             .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(BtnDinamica, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtnDinamica1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BtnComportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(BtnComportamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                                    .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jComboBoxCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(jLabel4))
+                                        .addComponent(jComboBoxDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 9, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(110, 110, 110))
         );
         jPanelPrincipalLayout.setVerticalGroup(
             jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,8 +207,8 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -267,7 +269,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelComportamientoLayout.createSequentialGroup()
                     .addGap(318, 318, 318)
                     .addComponent(jLabel7)
-                    .addContainerGap(267, Short.MAX_VALUE)))
+                    .addContainerGap(274, Short.MAX_VALUE)))
         );
         jPanelComportamientoLayout.setVerticalGroup(
             jPanelComportamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +278,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelComportamientoLayout.createSequentialGroup()
                     .addGap(349, 349, 349)
                     .addComponent(jLabel7)
-                    .addContainerGap(350, Short.MAX_VALUE)))
+                    .addContainerGap(352, Short.MAX_VALUE)))
         );
 
         jPanelBase.add(jPanelComportamiento, "card2");
@@ -294,7 +296,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelDinamicaLayout.createSequentialGroup()
                     .addGap(318, 318, 318)
                     .addComponent(jLabel8)
-                    .addContainerGap(267, Short.MAX_VALUE)))
+                    .addContainerGap(274, Short.MAX_VALUE)))
         );
         jPanelDinamicaLayout.setVerticalGroup(
             jPanelDinamicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +305,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanelDinamicaLayout.createSequentialGroup()
                     .addGap(349, 349, 349)
                     .addComponent(jLabel8)
-                    .addContainerGap(350, Short.MAX_VALUE)))
+                    .addContainerGap(352, Short.MAX_VALUE)))
         );
 
         jPanelBase.add(jPanelDinamica, "card2");
@@ -319,14 +321,14 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPaneLibreLayout.createSequentialGroup()
                 .addGap(280, 280, 280)
                 .addComponent(jLabel2)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         jPaneLibreLayout.setVerticalGroup(
             jPaneLibreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPaneLibreLayout.createSequentialGroup()
                 .addGap(329, 329, 329)
                 .addComponent(jLabel2)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addContainerGap(372, Short.MAX_VALUE))
         );
 
         jPanelBase.add(jPaneLibre, "card2");
@@ -336,7 +338,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -382,10 +384,13 @@ public class Principal extends javax.swing.JFrame {
         jPanelBase.repaint();
         jPanelBase.revalidate();  
         obtenerDatosDinamica();
+        pintarMapa(dtoDinamica);
+        
         
                
     }//GEN-LAST:event_BtnDinamicaActionPerformed
 public void obtenerDatosDinamica(){
+     ArrayList<String> provincia= new ArrayList<String>();
      ArrayList<String> canton= new ArrayList<String>();
      ArrayList<String> distrito= new ArrayList<String>();
      ArrayList<String> rangoAno= new ArrayList<String>();
@@ -395,62 +400,94 @@ public void obtenerDatosDinamica(){
      ArrayList<String> lesion = new ArrayList<String>();
      ArrayList<String> consulta = new ArrayList<String>();
      ArrayList<String> edadQuinquenal = new ArrayList<String>();
-     
-    //Nivel Pais, todas las provincias
-    //Veridficar si se piden toas las provincias
-     ArrayList<String> provincia= new ArrayList<String>();
-        int size = jTextAreaProvincias.getLineCount();
-        System.out.println("size: "+size);
-        if(size > 1){
-            jComboBoxCanton.enableInputMethods(false);
-            jComboBoxDistrito.enableInputMethods(false);
-            StringBuilder provincias = new StringBuilder();
-            for(int i=0; i<size; i++){
-            provincias.append("\n").append(jTextAreaProvincias.getLineCount());
-            //muchas provincias no se pide canton ni distrito
-            rangoAno.add(jComboBoxAño.getSelectedItem().toString());
-            int ed = Integer.parseInt(jTextFieldEdad.getText());
-            if(ed >= 0 && ed<=90){
-                edad.add(jTextFieldEdad.getText());
-                //calcular edad quinquenal
-            }else{
-                JOptionPane.showMessageDialog(null, "Error la edad no se encuentra del del rango de busqueda", "InfoBox: " + "ERROR", JOptionPane.INFORMATION_MESSAGE);
-             }
-            
-            }
-            sexo.add(jComboBoxSexo.getSelectedItem().toString());
-            rol.add(jComboBoxRol.getSelectedItem().toString());
-            lesion.add(jComboBoxLesion.getSelectedItem().toString());
-            provincia.add(provincias.toString());
-        
-        }else{
-            jComboBoxCanton.enableInputMethods(true);
-            jComboBoxDistrito.enableInputMethods(true);
-                        StringBuilder provincias = new StringBuilder();
-            for(int i=0; i<size; i++){
-            provincias.append("\n").append(jTextAreaProvincias.getLineCount());
-            //muchas provincias no se pide canton ni distrito
-            rangoAno.add(jComboBoxAño.getSelectedItem().toString());
-            int ed = Integer.parseInt(jTextFieldEdad.getText());
-            if(ed >= 0 && ed<=90){
-                edad.add(jTextFieldEdad.getText());
-                //calcular edad quinquenal
-            }else{
-                JOptionPane.showMessageDialog(null, "Error la edad no se encuentra del del rango de busqueda", "InfoBox: " + "ERROR", JOptionPane.INFORMATION_MESSAGE);
-            }
-            sexo.add(jComboBoxSexo.getSelectedItem().toString());
-            rol.add(jComboBoxRol.getSelectedItem().toString());
-            lesion.add(jComboBoxLesion.getSelectedItem().toString());
-            }
-            provincia.add(provincias.toString()); 
+
+    rangoAno.add(jComboBoxAño.getSelectedItem().toString());
+    sexo.add(jComboBoxSexo.getSelectedItem().toString());
+    rol.add(jComboBoxRol.getSelectedItem().toString());
+    lesion.add(jComboBoxLesion.getSelectedItem().toString());
+    edad.add(jTextFieldEdad.getText());
+    int cantProvincias = jTextAreaProvincias.getLineCount();
+    String prov = jTextAreaProvincias.getText();
+    String palabra = "";
+    System.out.println("provincias: "+cantProvincias);
+    if(cantProvincias > 1){
+        int num = prov.length();
+        System.out.println("num: "+num);
+        for (int i = 0; i < prov.length(); i++){
+                char c = prov.charAt(i); 
+                if( c != '\n'){
+                    palabra+=c;
+                }else{
+                    provincia.add(palabra);
+                    palabra = "";
+                }  
         }
-       
-        //Cracion DTODinamica
         dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
-        //Se pasa al conrolador
-        controlador = new Controlador(dtoDinamica);
+    }else{
+        if(cantProvincias == 1){
+            System.out.println("entra else");
+            provincia.add(prov);
+            distrito.add(jComboBoxDistrito.getSelectedItem().toString());
+            canton.add(jComboBoxCanton.getSelectedItem().toString());
+            dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
+
+        }else{
+            if(cantProvincias == 0){
+            System.out.println("entra cero");
+            provincia.add("Cartago");
+            provincia.add("San José");
+            provincia.add("Puntarenas");
+            provincia.add("Heredia");
+            provincia.add("Limón");
+            provincia.add("Alajuela");
+            provincia.add("Heredia");
+            dtoDinamica = new DTODinamica(provincia,canton, distrito, rangoAno, consulta, edadQuinquenal, edad, sexo, rol, lesion);
+
+        }
+    }
+    
+    }
+    controlador = new Controlador(dtoDinamica);
+    controlador.procesarConsultaDinamica(dtoDinamica);
+    System.out.println("dto: " + dtoDinamica.toString());
+    
     
 }
+
+ private void pintarMapa(DTODinamica dtoDinamica){
+    
+    MapOptions mapOptions = new MapOptions();
+    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
+    mapOptions.setMapTypeControlOptions(controlOptions);
+    ArrayList<String> provincia = dtoDinamica.getProvincia();
+    String prov = provincia.get(0);
+    
+    switch (prov){
+        case "Cartago":
+            MapaCartago temp = new MapaCartago("ventana prueba");
+            break;
+        case "San Jose":
+           MapaSanJose temp1 = new MapaSanJose("ventana prueba");
+            break;
+        case "Alajuela":
+            MapaAlajuela temp2 = new MapaAlajuela("ventana prueba");
+            break;
+         case "Limón":
+            //MapaLimon temp3 = new MapaLimon("ventana prueba");
+            break;           
+         case "Puntarenas":
+            MapaPuntarenas temp3 = new MapaPuntarenas("ventana prueba");
+            break; 
+         case "Guanacaste":
+            MapaGuanacaste temp4 = new MapaGuanacaste("ventana prueba");
+            break;  
+         case "Heredia":
+            MapaHeredia temp5 = new MapaHeredia("ventana prueba");
+            break;             
+        }
+           
+    }
+
     private void BtnDinamica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDinamica1ActionPerformed
         //Eliminar paneles
         jPanelBase.removeAll();
@@ -499,10 +536,13 @@ public void obtenerDatosDinamica(){
 
     private DTODinamica dtoDinamica;
     private Controlador controlador;
+    private Mapear mapa;
+    private Map map;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BtnComportamiento;
     private javax.swing.JToggleButton BtnDinamica;
     private javax.swing.JToggleButton BtnDinamica1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> jComboBoxAño;
     private javax.swing.JComboBox<String> jComboBoxCanton;
     private javax.swing.JComboBox<String> jComboBoxDistrito;
